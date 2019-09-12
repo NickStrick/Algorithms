@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+'''
 import sys
 
 # The cache parameter is here for if you want to implement
@@ -54,7 +54,101 @@ def eating_cookies(n,  rest=[], cache=None):
 # print(eating_cookies(2), 2)
 print(eating_cookies(5), 13)
 # print(eating_cookies(10), 274)
+'''
 
+# lecture -----------------------------------------------------------------------------------
+import sys
+
+# The cache parameter is here for if you want to implement
+# a solution that is more efficient than the naive
+# recursive solution
+'''
+0
+--------------
+1
+
+1
+--------------
+1
+2 
+--------------
+1,1 
+2
+
+3
+--------------
+1,1,1 
+1,2 
+2,1 
+3
+
+4
+--------------
+1,1,1,1 
+1,1,2 
+1,2,1 
+2,1,1 
+2,2 
+1,3 
+3,1
+
+5
+--------------
+1,1,1,1,1
+1,1,1,2 
+1,1,2,1 
+1,2,1,1 
+2,1,1,1 
+1,1,3 
+1,3,1 
+3,1,1 
+1,2,2 
+2,1,2 
+2,2,1 
+2,3 
+3,2
+
+1,1,1,1,1
+  1,1,1,2
+    1,2,2
+    1,1,3
+      2,3
+
+Find all combinations of 1,2,3 that add up to n
+Find all possible orderings of those combinations
+
+look at the ways to eat (n-1) cookies, then eat one more
+now look at the ways to eat (n-2) cookies, then eat 2 at once
+now look at the ways to eat (n-3) cookies, then eat 3 at once
+'''
+
+# Spec
+#   for each cookie, loop through the
+
+
+def eating_cookies(n, cache=None):
+
+    if n == 0:
+        return 1
+    elif n < 0:
+        return 0
+    else:
+
+        one = eating_cookies(n-1)
+        two = eating_cookies(n-2)
+        three = eating_cookies(n-3)
+        return one+two+three
+
+    # result.append(one)
+    # result.append(two)
+    # result.append(three)
+print(eating_cookies(0), 1)
+print(eating_cookies(5), 13)
+print(eating_cookies(4), 7)
+print(eating_cookies(1), 1)
+print(eating_cookies(2), 2)
+print(eating_cookies(10), 274)
+# print(eating_cookies(50, [0 for i in range(51)]), 10562230626642)
 # if __name__ == "__main__":
 #   if len(sys.argv) > 1:
 #     num_cookies = int(sys.argv[1])
