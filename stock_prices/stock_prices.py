@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
 import argparse
+# Spec:
+#   loop through each price
+#   for each price, find the biggest difference in prices between the prices before the current price in the array
 
-# loop through each price
-# for each price, find the biggest difference in prices between the prices before the current price in the array
-# for each price, loop through all prices before it, find the biggest difference in prices
+#   for each price, loop through all prices before it, find the biggest difference in prices
 
 
 def find_max_profit(prices):
